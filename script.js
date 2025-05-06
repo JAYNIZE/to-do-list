@@ -1,7 +1,7 @@
 function saveTasks() {
     let tasks = [];
     document.querySelectorAll("#taskList li").forEach(li => {
-        tasks.push({ text: li.textContent.replace(/ \(⏳.*mins\)/, ""), time: li.dataset.time });
+        tasks.push({ text: li.textContent.replace(/ \(⏳.*minutes\)/, ""), time: li.dataset.time });
     });
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
@@ -19,7 +19,7 @@ function addTask(taskText, timeLeft, save = true) {
     let taskList = document.getElementById("taskList");
 
     let li = document.createElement("li");
-    li.textContent = `${taskText} (⏳ ${timeLeft}mins)`;
+    li.textContent = `${taskText} (⏳ ${timeLeft}minutes)`;
     li.dataset.time = timeLeft;
 
     let removeBtn = document.createElement("button");
@@ -35,7 +35,7 @@ function addTask(taskText, timeLeft, save = true) {
 
     let countdown = setInterval(() => {
         timeLeft--;
-        li.textContent = `${taskText} (⏳ ${timeLeft}s)`;
+        li.textContent = `${taskText} (⏳ ${timeLeft}minutes)`;
         li.dataset.time = timeLeft;
         li.appendChild(removeBtn);
 
